@@ -4,7 +4,6 @@ uint8_t pins[SENSOR_PINS] = {2, 3, 4, 5};
 
 /*
  * 0000 -> 0  -> stop
- *
  * 0001 -> 1  -> full right
  * 0011 -> 3  -> normal right
  * 0010 -> 2  -> slight rigth
@@ -12,6 +11,7 @@ uint8_t pins[SENSOR_PINS] = {2, 3, 4, 5};
  * 0100 -> 4  -> slight left
  * 1100 -> 12 -> normal left
  * 1000 -> 8  -> full left
+ * 1111 -> 15 -> stop
  *
  */
 void controller(uint8_t data) {
@@ -40,8 +40,11 @@ void controller(uint8_t data) {
     case 8:
       Serial.println("full left");
       break;
+    case 15:
+      Serial.println("stop");
+      break;
     default:
-      Serial.println("what ???");
+      Serial.println("stop");
   }
 }
 
